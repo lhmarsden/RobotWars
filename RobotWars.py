@@ -7,7 +7,8 @@ Created on Mon Jun 29 10:09:50 2020
 
 class Robot:
     
-    def __init__(self,n,c,st,a,sp,h,w):
+    def __init__(self,num,n,c,st,a,sp,h,w):
+        self.number = num
         self.name = n
         self.colour = c
         self.strength = st # Strength of attack (1-10)
@@ -19,7 +20,8 @@ class Robot:
     
     def print_stats(self):
         print(
-            '\nName: '+self.name
+            '\nNumber: '+str(self.number)
+            +'\nName: '+self.name
             +'\nColour: '+self.colour
             +'\nStrength: '+str(self.strength)+'/10'
             +'\nArmour: '+str(self.armour)+'/10'
@@ -28,7 +30,22 @@ class Robot:
             +'\nWeight: '+str(self.weight)+' kg'
             )
 
-r1 = Robot('Buster','blue',6,5,1,50,40)
-r2 = Robot('Speedster','red',7,4,10,12,8)
+class Person:
+    
+    def __init__(self,n):
+        self.name = n
+    
+    def select_robot(self):
+        print("\nPlease select a robot from the below choices by typing its number")
+        for robot in robots:
+            robots[robot].print_stats()
+        
+#%%
+robots = {}
+robots['r1'] = Robot(1,'Buster','blue',6,5,1,50,40)
+robots['r2'] = Robot(2,'Speedster','red',7,4,10,12,8)
+       
+p1 = Person('Player 1')
+p2 = Person('Player 2')
 
-r1.print_stats()
+p1.select_robot()
